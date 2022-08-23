@@ -441,9 +441,9 @@ function M.get_managed_clients(bufnr)
   local configs = require 'lspconfig.configs'
   local all_clients = {}
   -- if a buffer is provided, only return clients associated with that buffer
-  for _, client in pairs(vim.lsp.get_active_clients { bufnr = bufnr }) do
+  vim.lsp.for_each_buffer_client(bufnr, function (client)
     all_clients[client.id] = client
-  end
+  end)
   local clients = {}
   for _, config in pairs(configs) do
     if config.manager then

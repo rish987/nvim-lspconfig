@@ -63,23 +63,23 @@ _G.load_config = function()
     vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
   end
 
-  -- Add the server that troubles you here
-  local name = 'pyright'
-  local cmd = { 'pyright-langserver', '--stdio' } -- needed for elixirls, omnisharp, sumneko_lua
-  if not name then
-    print 'You have not defined a server name, please edit minimal_init.lua'
-  end
-  if not nvim_lsp[name].document_config.default_config.cmd and not cmd then
-    print [[You have not defined a server default cmd for a server
-      that requires it please edit minimal_init.lua]]
-  end
+  ---- Add the server that troubles you here
+  --local name = 'pyright'
+  --local cmd = { 'pyright-langserver', '--stdio' } -- needed for elixirls, omnisharp, sumneko_lua
+  --if not name then
+  --  print 'You have not defined a server name, please edit minimal_init.lua'
+  --end
+  --if not nvim_lsp[name].document_config.default_config.cmd and not cmd then
+  --  print [[You have not defined a server default cmd for a server
+  --    that requires it please edit minimal_init.lua]]
+  --end
 
-  nvim_lsp[name].setup {
-    cmd = cmd,
-    on_attach = on_attach,
-  }
+  --nvim_lsp[name].setup {
+  --  cmd = cmd,
+  --  on_attach = on_attach,
+  --}
 
-  print [[You can find your log at $HOME/.cache/nvim/lsp.log. Please paste in a github issue under a details tag as described in the issue template.]]
+  --print [[You can find your log at $HOME/.cache/nvim/lsp.log. Please paste in a github issue under a details tag as described in the issue template.]]
 end
 
 if vim.fn.isdirectory(install_path) == 0 then
